@@ -1,87 +1,100 @@
 # Cerver
 
-**Cerver** is a lightweight HTTP server implemented in C, designed to handle basic HTTP requests and serve static files. It features routing, MIME type handling, and logging functionalities.
+Cerver is a lightweight and straightforward HTTP server library written in C, designed to be easy to use and integrate into your projects. Created by Farhan Ali ([@farhanaliofficial](https://github.com/farhanaliofficial)), this library allows you to quickly set up a server, define routes, and serve static files with minimal setup. Whether you're building a small personal project or a larger application, Cerver provides the essential tools needed to handle HTTP requests efficiently.
 
-![License](https://img.shields.io/badge/License-MIT-green)
-![Release](https://img.shields.io/github/release/farhanaliofficial/cerver)
-![Stars](https://img.shields.io/github/stars/farhanaliofficial/cerver)
-![Forks](https://img.shields.io/github/forks/farhanaliofficial/cerver)
+![GitHub stars](https://img.shields.io/github/stars/farhanaliofficial/cerver.svg)
+![GitHub forks](https://img.shields.io/github/forks/farhanaliofficial/cerver.svg)
+![GitHub issues](https://img.shields.io/github/issues/farhanaliofficial/cerver.svg)
+![GitHub release](https://img.shields.io/github/release/farhanaliofficial/cerver.svg)
 
 ## Features
 
-- **Basic HTTP Server**: Serves static files over HTTP.
-- **Custom Routing**: Map routes to specific file paths.
-- **MIME Type Handling**: Supports multiple file types.
-- **Logging**: Provides request logs with timestamps.
+- Simple and easy to use
+- Supports adding multiple routes
+- Serves static files
+- Logs HTTP requests
 
-## Getting Started
+## Installation
 
-### Prerequisites
+To use `cerver`, clone the repository and include the `server.h` and `server.c` files in your project.
 
-- GCC compiler
-- Standard C library
+```bash
+git clone https://github.com/farhanaliofficial/cerver.git
+```
 
-### Installation
+## Usage
 
-1. **Clone the repository:**
+### Example
 
-   ```bash
-   git clone https://github.com/farhanaliofficial/cerver.git
-   cd cerver
-   ```
+```c
+#include "server.h"
+#include <stdio.h>
 
-2. **Use with your project**
-   ```#include "server.h"```
+int main() {
+    Server server;
+    init_server(&server, 3000);
 
-### Example Usage
+    add_route("/", "web/index.html");
+    add_route("/about", "web/about.html");
+    add_route("/contact", "web/contact.html");
 
-1. **Add Routes:**
+    start_server(&server);
 
-   To define routes and serve files, include `server.h` in your source code and use the provided functions. Here’s a simple example of setting up routes:
+    return 0;
+}
+```
 
-   ```c
-   #include "server.h"
+## API
 
-   int main() {
-       Server server;
-       init_server(&server, 8080);
+### Structs
 
-       add_route("/", "index.html");
-       add_route("/about", "about.html");
+#### `Server`
 
-       start_server(&server);
+```c
+typedef struct {
+    int port;
+    int server_fd;
+    int addrlen;
+    struct sockaddr_in address;
+} Server;
 
-       return 0;
-   }
-   ```
+```
 
-2. **Create Files:**
+#### `Route`
 
-   Place the files `index.html` and `about.html` in the same directory as your executable or adjust the paths accordingly.
+```c
+typedef struct {
+    char *route;
+    char *file_path;
+} Route;
+```
 
-3. **Accessing the Server:**
+### Functions
 
-   Open a web browser and navigate to `http://localhost:8080` to view the `index.html` file. Navigate to `http://localhost:8080/about` to view the `about.html` file.
+#### `void init_server(Server *server, int port);`
 
-## Supported MIME Types
+Initializes the server with the specified port.
 
-- `text/html`
-- `text/css`
-- `application/javascript`
-- `application/json`
-- `image/png`
-- `image/jpeg`
-- `image/gif`
-- `text/plain`
-  
+- `server`: A pointer to the `Server` structure.
+- `port`: The port number to listen on.
+
+#### `void add_route(char *route, char *file_path);`
+
+Adds a new route to the server.
+
+- `route`: The URL path for the route.
+- `file_path`: The file path to serve when the route is accessed.
+
+#### `void start_server(Server *server);`
+
+Starts the server and listens for incoming connections.
+
+- `server`: A pointer to the `Server` structure.
+
 ## Contributing
 
-Feel free to open issues or submit pull requests to improve Cerver. Contributions are welcome!
+Feel free to submit issues and pull requests! Contributions are welcome.
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Contact
-
-Developed by [Farhan Ali](https://github.com/farhanaliofficial). For any questions or feedback, please reach out via GitHub.
