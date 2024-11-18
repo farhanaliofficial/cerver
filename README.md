@@ -1,11 +1,11 @@
 # Cerver
 
-Cerver is a lightweight and straightforward HTTP server library written in C, designed to be easy to use and integrate into your projects. Created by Farhan Ali ([@farhanaliofficial](https://github.com/farhanaliofficial)), this library allows you to quickly set up a server, define routes, and serve static files with minimal setup. Whether you're building a small personal project or a larger application, Cerver provides the essential tools needed to handle HTTP requests efficiently.
+Cerver is a lightweight and straightforward HTTP server library written in C, designed to be easy to use and integrate into your projects. Created by Farhan Ali ([@farhaanaliii](https://github.com/farhaanaliii)), this library allows you to quickly set up a server, define routes, and serve static files with minimal setup. Whether you're building a small personal project or a larger application, Cerver provides the essential tools needed to handle HTTP requests efficiently.
 
-![GitHub stars](https://img.shields.io/github/stars/farhanaliofficial/cerver.svg)
-![GitHub forks](https://img.shields.io/github/forks/farhanaliofficial/cerver.svg)
-![GitHub issues](https://img.shields.io/github/issues/farhanaliofficial/cerver.svg)
-![GitHub release](https://img.shields.io/github/release/farhanaliofficial/cerver.svg)
+![GitHub stars](https://img.shields.io/github/stars/farhaanaliii/cerver.svg)
+![GitHub forks](https://img.shields.io/github/forks/farhaanaliii/cerver.svg)
+![GitHub issues](https://img.shields.io/github/issues/farhaanaliii/cerver.svg)
+![GitHub release](https://img.shields.io/github/release/farhaanaliii/cerver.svg)
 
 ## Features
 
@@ -19,7 +19,7 @@ Cerver is a lightweight and straightforward HTTP server library written in C, de
 To use `cerver`, clone the repository and include the `server.h` and `server.c` files in your project.
 
 ```bash
-git clone https://github.com/farhanaliofficial/cerver.git
+git clone https://github.com/farhaanaliii/cerver.git
 ```
 
 ## Usage
